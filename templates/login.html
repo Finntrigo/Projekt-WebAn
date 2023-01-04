@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Login Page{% endblock %}
+{% block content %}
+<h1>Login</h1>
+<!-- mit den untenstehen code, zeile 6-13, werden alle flash messages angezeigt, weil wir mit if abfragen 
+und mit einer for Schleife durchloopen//-->
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p>{{msg}}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+<form action="/login" method="post">
+    <p>Username</p>
+    <p><input type="text" name="username"/></p>
+    <p>Password</p>
+    <p><input type="text" name="password"/></p>
+    <p><input type="submit" value="submit"/></p>
+</form>
+{% endblock %}
